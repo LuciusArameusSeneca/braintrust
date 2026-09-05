@@ -21,3 +21,4 @@ If this archive was useful to you, donations are welcome - siehe [security-portf
 | 2026-09-05 | Feat/auth phone otp verification rw ug | 85/100 | [Eintrag](entries/20260905_114002_job2334_Featauth_phone_otp_verification_rw_ug.md) |
 | 2026-09-05 | docs: document gas-sponsorship fallback and the insufficient_balance failure | 85/100 | [Eintrag](entries/20260905_114008_job2350_docs_document_gas-sponsorship_fallback_and_the_insufficient_.md) |
 | 2026-09-05 | moment-1.7.2.min.js: 4 vulnerabilities (highest severity is: 8.7) | 85/100 | [Eintrag](entries/20260905_114015_job2352_moment-172minjs_4_vulnerabilities_highest_severity_is_87.md) |
+| 2026-09-05 | Suggest a staking product or service: ether.fi (staking pool) | 85/100 | [Eintrag](entries/20260905_114021_job4017_Suggest_a_staking_product_or_service_etherfi_staking_pool.md) |
