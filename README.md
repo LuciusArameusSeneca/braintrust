@@ -14,3 +14,4 @@ If this archive was useful to you, donations are welcome - siehe [security-portf
 | 2026-09-05 | From Aggregate Signatures to Aggregate Proofs: A Survey of Ethereum's Post-Quantum Consensus | 80/100 | [Eintrag](entries/20260905_113917_job358_From_Aggregate_Signatures_to_Aggregate_Proofs_A_Survey_of_Et.md) |
 | 2026-09-05 | Create Zcash Ecosystem Digest - August 23rd | 75/100 | [Eintrag](entries/20260905_113924_job550_Create_Zcash_Ecosystem_Digest_-_August_23rd.md) |
 | 2026-09-05 | chore: release v0.26.0 | 85/100 | [Eintrag](entries/20260905_113930_job587_chore_release_v0260.md) |
+| 2026-09-05 | chore(deps): update all minor dependencies | 72/100 | [Eintrag](entries/20260905_113937_job779_choredeps_update_all_minor_dependencies.md) |
