@@ -1,9 +1,9 @@
 # braintrust
-Automatisches Archiv unverifizierter KI-Auswertungen zu GitHub-Auftraegen
+Archiv unverifizierter, automatisiert erzeugter Eintraege
 
-Dieses Repository sammelt automatisiert erzeugte Loesungsvorschlaege zu GitHub-Auftraegen - unabhaengig davon, ob sie sich als brauchbar herausstellen oder nicht. Zweck: eine vollstaendige, transparente Sammlung der automatisierten Arbeit fuehren, ohne dass gelegentliche Halluzinationen der eingesetzten kleinen, rein lokal/offline laufenden KI-Modelle das kuratierte, manuell gegengeprüfte [security-portfolio](https://github.com/LuciusArameusSeneca/security-portfolio) verwaessert.
+Dieses Repository sammelt automatisiert erzeugte Eintraege - unabhaengig davon, ob sie sich als brauchbar herausstellen oder nicht. Zweck: eine vollstaendige, transparente Sammlung fuehren, ohne dass gelegentliche Fehler der zugrunde liegenden Automatisierung das kuratierte, manuell gegengeprüfte [security-portfolio](https://github.com/LuciusArameusSeneca/security-portfolio) verwaessern.
 
-**⚠️ Wichtiger Hinweis:** Alle Eintraege hier sind UNVERIFIZIERTE Rohausgaben eines Offline-KI-Modells - sie koennen erfundenen Code, falsche Annahmen oder inhaltliche Fehler enthalten. Nichts hier wurde manuell gegengeprueft. Fuer kuratierte, verifizierte Web3-Security-Audits siehe stattdessen [security-portfolio](https://github.com/LuciusArameusSeneca/security-portfolio).
+**⚠️ Wichtiger Hinweis:** Alle Eintraege hier sind UNVERIFIZIERT - sie koennen erfundene Inhalte, falsche Annahmen oder inhaltliche Fehler enthalten. Nichts hier wurde manuell gegengeprueft. Fuer kuratierte, verifizierte Web3-Security-Audits siehe stattdessen [security-portfolio](https://github.com/LuciusArameusSeneca/security-portfolio).
 
 ## Support this work / Sponsor
 

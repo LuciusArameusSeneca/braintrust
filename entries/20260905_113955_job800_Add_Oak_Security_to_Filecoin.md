@@ -4,11 +4,11 @@
 **Bewertung:** 80/100  
 **Einordnung:** Zusaetzlich als moegliche Web3-Security-/Smart-Contract-Audit-Aufgabe erkannt (Chain: evm) - eine kuratierte, manuell gegengeprüfte Fassung findet sich ggf. im [security-portfolio](https://github.com/LuciusArameusSeneca/security-portfolio).
 
-> ⚠️ **Automatisierte Rohausgabe eines lokal/offline laufenden KI-Modells.** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder Halluzinationen enthalten - insbesondere erfundenen Code, der auf im Auftrag nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
+> ⚠️ **Unverifizierter, automatisiert erzeugter Eintrag.** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder erfundene Inhalte enthalten - insbesondere erfundenen Code, der auf nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
 
 ---
 
-## Kurzerklaerung des Auftrags
+## Kurzbeschreibung
 
 ## What changed
 
@@ -31,7 +31,7 @@ Filecoin's official audit index records Oak Security's March 2023 audit of the F
 
 Filecoin is currently eligible and security has a 1.5× weekly multiplier. The three rows contain 26 newly populated cells (up
 
-## Automatisierte KI-Loesung (unverifiziert)
+## Ergebnis (unverifiziert)
 
 ```javascript
 // JavaScript code for validating the new rows in CSV files
@@ -92,4 +92,4 @@ for (let i = 0; i < filePaths.length; i++) {
 
 ---
 
-*Automatisiert erzeugt und archiviert - dokumentiert einen real gefundenen GitHub-Auftrag.*
+*Automatisiert erzeugt und archiviert.*

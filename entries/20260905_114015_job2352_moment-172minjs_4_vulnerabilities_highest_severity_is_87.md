@@ -4,11 +4,11 @@
 **Bewertung:** 85/100  
 **Einordnung:** Zusaetzlich als moegliche Web3-Security-/Smart-Contract-Audit-Aufgabe erkannt (Chain: evm) - eine kuratierte, manuell gegengeprüfte Fassung findet sich ggf. im [security-portfolio](https://github.com/LuciusArameusSeneca/security-portfolio).
 
-> ⚠️ **Automatisierte Rohausgabe eines lokal/offline laufenden KI-Modells.** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder Halluzinationen enthalten - insbesondere erfundenen Code, der auf im Auftrag nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
+> ⚠️ **Unverifizierter, automatisiert erzeugter Eintrag.** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder erfundene Inhalte enthalten - insbesondere erfundenen Code, der auf nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
 
 ---
 
-## Kurzerklaerung des Auftrags
+## Kurzbeschreibung
 
 Moment-1.7.2.min.js: 4 vulnerabilities (highest severity is: 8.7)
 
@@ -34,7 +34,7 @@ Fixed in (moment version): b5cfc4221340ef65eb5bc7ae2c60bc1ae31a20ff
 
 Reachability: Not Defined
 
-## Automatisierte KI-Loesung (unverifiziert)
+## Ergebnis (unverifiziert)
 
 ```javascript
 // Import moment.js library
@@ -86,4 +86,4 @@ Dieser verfeinerte Code ist vollständig und korrekt, ohne doppelte oder wiederh
 
 ---
 
-*Automatisiert erzeugt und archiviert - dokumentiert einen real gefundenen GitHub-Auftrag.*
+*Automatisiert erzeugt und archiviert.*

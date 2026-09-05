@@ -2,13 +2,13 @@
 
 **Datum:** 2026-09-05  
 **Bewertung:** 75/100  
-**Einordnung:** Kein Security-/Audit-Bezug erkannt - allgemeiner GitHub-Auftrag.
+**Einordnung:** Kein Security-/Audit-Bezug erkannt.
 
-> ⚠️ **Automatisierte Rohausgabe eines lokal/offline laufenden KI-Modells.** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder Halluzinationen enthalten - insbesondere erfundenen Code, der auf im Auftrag nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
+> ⚠️ **Unverifizierter, automatisiert erzeugter Eintrag.** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder erfundene Inhalte enthalten - insbesondere erfundenen Code, der auf nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
 
 ---
 
-## Kurzerklaerung des Auftrags
+## Kurzbeschreibung
 
 # Zcash Ecosystem Digest - August 23rd
 
@@ -20,7 +20,7 @@ Atunto nipasẹ [Rems](https://x.com/rems_gk) ati Itumọ si ede Yoruba nipasẹ
 
 # Àwọn
 
-## Automatisierte KI-Loesung (unverifiziert)
+## Ergebnis (unverifiziert)
 
 ### Zcash Ecosystem Digest - August 23rd
 
@@ -71,4 +71,4 @@ Der ZCash-Community und die ZCash-Foundation haben einen wichtigen Aspekt des On
 
 ---
 
-*Automatisiert erzeugt und archiviert - dokumentiert einen real gefundenen GitHub-Auftrag.*
+*Automatisiert erzeugt und archiviert.*

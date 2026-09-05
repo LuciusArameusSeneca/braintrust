@@ -2,13 +2,13 @@
 
 **Datum:** 2026-09-05  
 **Bewertung:** 85/100  
-**Einordnung:** Kein Security-/Audit-Bezug erkannt - allgemeiner GitHub-Auftrag.
+**Einordnung:** Kein Security-/Audit-Bezug erkannt.
 
-> ⚠️ **Automatisierte Rohausgabe eines lokal/offline laufenden KI-Modells.** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder Halluzinationen enthalten - insbesondere erfundenen Code, der auf im Auftrag nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
+> ⚠️ **Unverifizierter, automatisiert erzeugter Eintrag.** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder erfundene Inhalte enthalten - insbesondere erfundenen Code, der auf nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
 
 ---
 
-## Kurzerklaerung des Auftrags
+## Kurzbeschreibung
 
 ### Summary
 
@@ -27,7 +27,7 @@ The fallback condition is `insufficient_balance`, which triggers the `insufficie
 - **When sponsorship falls back** section added: new **When sponsorship falls back** section — the fallback conditions, two observable outcomes (wallet-pays success vs `insufficient_balance` failure), and both remedies (fund the named address / restore sponsorship conditions)
 - **docs/keeper-runs/error-codes.md**: document the structured `insufficient
 
-## Automatisierte KI-Loesung (unverifiziert)
+## Ergebnis (unverifiziert)
 
 ### `docs/wallet-management/gas.md`
 
@@ -106,4 +106,4 @@ This solution leverages known Ethereum libraries (ethers.js) and does not involv
 
 ---
 
-*Automatisiert erzeugt und archiviert - dokumentiert einen real gefundenen GitHub-Auftrag.*
+*Automatisiert erzeugt und archiviert.*

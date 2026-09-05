@@ -2,13 +2,13 @@
 
 **Datum:** 2026-09-05  
 **Bewertung:** 85/100  
-**Einordnung:** Kein Security-/Audit-Bezug erkannt - allgemeiner GitHub-Auftrag.
+**Einordnung:** Kein Security-/Audit-Bezug erkannt.
 
-> ⚠️ **Automatisierte Rohausgabe eines lokal/offline laufenden KI-Modells.** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder Halluzinationen enthalten - insbesondere erfundenen Code, der auf im Auftrag nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
+> ⚠️ **Unverifizierter, automatisiert erzeugter Eintrag.** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder erfundene Inhalte enthalten - insbesondere erfundenen Code, der auf nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
 
 ---
 
-## Kurzerklaerung des Auftrags
+## Kurzbeschreibung
 
 # Phone OTP Verification - PR Summary
 
@@ -41,7 +41,7 @@ In total, **239 backend routes** were checked.
 | `POST /auth/otp/verify` | No | Added |
 | `POST /auth/otp/resend` | No
 
-## Automatisierte KI-Loesung (unverifiziert)
+## Ergebnis (unverifiziert)
 
 ```typescript
 import { Injectable } from '@nestjs/common';
@@ -95,4 +95,4 @@ Diese Funktionen sind einfach zu implementieren mit bekannten Bibliotheken wie `
 
 ---
 
-*Automatisiert erzeugt und archiviert - dokumentiert einen real gefundenen GitHub-Auftrag.*
+*Automatisiert erzeugt und archiviert.*

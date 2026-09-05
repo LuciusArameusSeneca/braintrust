@@ -4,11 +4,11 @@
 **Bewertung:** 75/100  
 **Einordnung:** Zusaetzlich als moegliche Web3-Security-/Smart-Contract-Audit-Aufgabe erkannt (Chain: solana) - eine kuratierte, manuell gegengeprüfte Fassung findet sich ggf. im [security-portfolio](https://github.com/LuciusArameusSeneca/security-portfolio).
 
-> ⚠️ **Automatisierte Rohausgabe eines lokal/offline laufenden KI-Modells.** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder Halluzinationen enthalten - insbesondere erfundenen Code, der auf im Auftrag nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
+> ⚠️ **Unverifizierter, automatisiert erzeugter Eintrag.** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder erfundene Inhalte enthalten - insbesondere erfundenen Code, der auf nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
 
 ---
 
-## Kurzerklaerung des Auftrags
+## Kurzbeschreibung
 
 Hier ist die Zusammenfassung der Stellenausschreibungen für den Titel "Renovate update admin minor and patch updates (PHP 8.2)":
 
@@ -24,7 +24,7 @@ Diese Stellenausschreibungen sind in den folgenden Saetzen zusammenfasst:
 |---|---|
 | [aws/aws-sdk-php](https://aws.amazon.com/sdk-for-php) ([source](https://redirect.github.com/aws/aws-sdk-php)) | `3.356.21` -> `3.394.
 
-## Automatisierte KI-Loesung (unverifiziert)
+## Ergebnis (unverifiziert)
 
 Entwurf:
 
@@ -69,4 +69,4 @@ Dieser Entwurf ist eine einfache Beispielprogramm, der die PHP-Versionierung und
 
 ---
 
-*Automatisiert erzeugt und archiviert - dokumentiert einen real gefundenen GitHub-Auftrag.*
+*Automatisiert erzeugt und archiviert.*

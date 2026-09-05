@@ -4,11 +4,11 @@
 **Bewertung:** 72/100  
 **Einordnung:** Zusaetzlich als moegliche Web3-Security-/Smart-Contract-Audit-Aufgabe erkannt (Chain: solana) - eine kuratierte, manuell gegengeprüfte Fassung findet sich ggf. im [security-portfolio](https://github.com/LuciusArameusSeneca/security-portfolio).
 
-> ⚠️ **Automatisierte Rohausgabe eines lokal/offline laufenden KI-Modells.** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder Halluzinationen enthalten - insbesondere erfundenen Code, der auf im Auftrag nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
+> ⚠️ **Unverifizierter, automatisiert erzeugter Eintrag.** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder erfundene Inhalte enthalten - insbesondere erfundenen Code, der auf nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
 
 ---
 
-## Kurzerklaerung des Auftrags
+## Kurzbeschreibung
 
 Hier ist die Krypto/Web3-Stellenausschreibung auf Deutsch zusammenfasst:
 
@@ -20,7 +20,7 @@ Diese PR aktualisiert alle minor Dependencies in der GitHub-Repository WordPress
 | [@wordpress/blocks](https://redirect.github.com/WordPress/gutenberg/tree/HEAD/packages/blocks) ([source](https://redirect.github.com/WordPress/gutenberg/tree/HEAD/packages/blocks)) | [`15.24.0` → `15.26.0`](https://renovatebot.com/diffs/npm/@wordpress%2fblocks/15.24.0/15.26.0) |
 | [@wordpress/dependency-extraction-webpack-plugin](https://redirect.github.com/WordPress/gutenberg/tree/HEAD/packages/dependency-extraction-webpack-plugin) ([source](https://redirect.github.com/WordPress/gutenberg/tree/HEAD/packages/dependency-extraction-webpack-plugin)) | [`6.51.0` → `6.53.0`](https://renovatebot.com/diffs/npm/@wordpress%2fdependency-extraction-webpack-plugin/6.
 
-## Automatisierte KI-Loesung (unverifiziert)
+## Ergebnis (unverifiziert)
 
 Loesungsentwurf:
 
@@ -73,4 +73,4 @@ This script is a simple example and should be expanded with more complex logic f
 
 ---
 
-*Automatisiert erzeugt und archiviert - dokumentiert einen real gefundenen GitHub-Auftrag.*
+*Automatisiert erzeugt und archiviert.*
