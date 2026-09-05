@@ -1,6 +1,5 @@
 # Renovate update admin minor and patch updates (PHP 8.2)
 
-**Quelle:** [github](https://github.com/ntse/opg-lpa/pull/1)  
 **Datum:** 2026-09-05  
 **Bewertung:** 75/100  
 **Einordnung:** Zusaetzlich als moegliche Web3-Security-/Smart-Contract-Audit-Aufgabe erkannt (Chain: solana) - eine kuratierte, manuell gegengeprüfte Fassung findet sich ggf. im [security-portfolio](https://github.com/LuciusArameusSeneca/security-portfolio).

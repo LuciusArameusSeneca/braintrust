@@ -1,6 +1,5 @@
 # docs: document gas-sponsorship fallback and the insufficient_balance failure
 
-**Quelle:** [github](https://github.com/KeeperHub/keeperhub/pull/2268)  
 **Datum:** 2026-09-05  
 **Bewertung:** 85/100  
 **Einordnung:** Kein Security-/Audit-Bezug erkannt - allgemeiner GitHub-Auftrag.

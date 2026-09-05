@@ -1,6 +1,5 @@
 # chore(deps): update all minor dependencies
 
-**Quelle:** [github](https://github.com/cds-snc/gc-articles/pull/2763)  
 **Datum:** 2026-09-05  
 **Bewertung:** 72/100  
 **Einordnung:** Zusaetzlich als moegliche Web3-Security-/Smart-Contract-Audit-Aufgabe erkannt (Chain: solana) - eine kuratierte, manuell gegengeprüfte Fassung findet sich ggf. im [security-portfolio](https://github.com/LuciusArameusSeneca/security-portfolio).

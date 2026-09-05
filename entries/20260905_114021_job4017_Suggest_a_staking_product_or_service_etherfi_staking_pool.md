@@ -1,6 +1,5 @@
 # Suggest a staking product or service: ether.fi (staking pool)
 
-**Quelle:** [github](https://github.com/ethereum/ethereum-org-website/issues/19098)  
 **Datum:** 2026-09-05  
 **Bewertung:** 85/100  
 **Einordnung:** Kein Security-/Audit-Bezug erkannt - allgemeiner GitHub-Auftrag.

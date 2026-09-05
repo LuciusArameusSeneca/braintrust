@@ -1,6 +1,5 @@
 # moment-1.7.2.min.js: 4 vulnerabilities (highest severity is: 8.7)
 
-**Quelle:** [github](https://github.com/GHCbflam1/RailsGoat/issues/10)  
 **Datum:** 2026-09-05  
 **Bewertung:** 85/100  
 **Einordnung:** Zusaetzlich als moegliche Web3-Security-/Smart-Contract-Audit-Aufgabe erkannt (Chain: evm) - eine kuratierte, manuell gegengeprüfte Fassung findet sich ggf. im [security-portfolio](https://github.com/LuciusArameusSeneca/security-portfolio).

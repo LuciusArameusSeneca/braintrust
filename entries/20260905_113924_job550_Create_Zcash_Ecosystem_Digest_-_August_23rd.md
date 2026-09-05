@@ -1,6 +1,5 @@
 # Create Zcash Ecosystem Digest - August 23rd
 
-**Quelle:** [github](https://github.com/ZecHub/zechub/pull/2006)  
 **Datum:** 2026-09-05  
 **Bewertung:** 75/100  
 **Einordnung:** Kein Security-/Audit-Bezug erkannt - allgemeiner GitHub-Auftrag.

@@ -1,6 +1,5 @@
 # R-#163: Referral Program for learn.tg
 
-**Quelle:** [github](https://github.com/pasosdeJesus/learn.tg/issues/163)  
 **Datum:** 2026-09-05  
 **Bewertung:** 75/100  
 **Einordnung:** Kein Security-/Audit-Bezug erkannt - allgemeiner GitHub-Auftrag.

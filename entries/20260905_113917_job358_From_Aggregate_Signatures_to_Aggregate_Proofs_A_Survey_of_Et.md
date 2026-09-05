@@ -1,6 +1,5 @@
 # From Aggregate Signatures to Aggregate Proofs: A Survey of Ethereum's Post-Quantum Consensus
 
-**Quelle:** [github](https://github.com/AppliedPQC/pqc-research/issues/21)  
 **Datum:** 2026-09-05  
 **Bewertung:** 80/100  
 **Einordnung:** Zusaetzlich als moegliche Web3-Security-/Smart-Contract-Audit-Aufgabe erkannt (Chain: evm) - eine kuratierte, manuell gegengeprüfte Fassung findet sich ggf. im [security-portfolio](https://github.com/LuciusArameusSeneca/security-portfolio).

@@ -1,6 +1,5 @@
 # Feat/auth phone otp verification rw ug
 
-**Quelle:** [github](https://github.com/Ubwenge-Lab/back-end/pull/133)  
 **Datum:** 2026-09-05  
 **Bewertung:** 85/100  
 **Einordnung:** Kein Security-/Audit-Bezug erkannt - allgemeiner GitHub-Auftrag.
