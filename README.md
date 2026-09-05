@@ -11,4 +11,3 @@ If this archive was useful to you, donations are welcome - siehe [security-portf
 
 | Datum | Titel | Stufe-1-Score | Eintrag |
 |---|---|---|---|
-| 2026-09-05 | [TEST-EINTRAG - wird gleich wieder entfernt] | 50/100 | [Eintrag](entries/20260905_113323_job0_TEST-EINTRAG_-_wird_gleich_wieder_entfernt.md) |
