@@ -11,3 +11,4 @@ If this archive was useful to you, donations are welcome - siehe [security-portf
 
 | Datum | Titel | Stufe-1-Score | Eintrag |
 |---|---|---|---|
+| 2026-09-05 | From Aggregate Signatures to Aggregate Proofs: A Survey of Ethereum's Post-Quantum Consensus | 80/100 | [Eintrag](entries/20260905_113917_job358_From_Aggregate_Signatures_to_Aggregate_Proofs_A_Survey_of_Et.md) |
