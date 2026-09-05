@@ -1,7 +1,7 @@
 # braintrust
-Automatisches Archiv aller Stufe-3-KI-Auswertungen zu GitHub-Auftraegen
+Automatisches Archiv unverifizierter KI-Auswertungen zu GitHub-Auftraegen
 
-Dieses Repository sammelt JEDE finale Stufe-3-Loesung der CryptoJobHunter-KI-Pipeline zu einem GitHub-Auftrag - unabhaengig davon, ob sie sich als brauchbar herausstellt oder nicht. Zweck: eine vollstaendige, transparente Sammlung der automatisierten Arbeit fuehren, ohne dass gelegentliche Halluzinationen der eingesetzten kleinen, rein lokal/offline laufenden Modelle (0.5b/1.5b/7b) das kuratierte, manuell gegengeprüfte [security-portfolio](https://github.com/LuciusArameusSeneca/security-portfolio) verwaessert.
+Dieses Repository sammelt automatisiert erzeugte Loesungsvorschlaege zu GitHub-Auftraegen - unabhaengig davon, ob sie sich als brauchbar herausstellen oder nicht. Zweck: eine vollstaendige, transparente Sammlung der automatisierten Arbeit fuehren, ohne dass gelegentliche Halluzinationen der eingesetzten kleinen, rein lokal/offline laufenden KI-Modelle das kuratierte, manuell gegengeprüfte [security-portfolio](https://github.com/LuciusArameusSeneca/security-portfolio) verwaessert.
 
 **⚠️ Wichtiger Hinweis:** Alle Eintraege hier sind UNVERIFIZIERTE Rohausgaben eines Offline-KI-Modells - sie koennen erfundenen Code, falsche Annahmen oder inhaltliche Fehler enthalten. Nichts hier wurde manuell gegengeprueft. Fuer kuratierte, verifizierte Web3-Security-Audits siehe stattdessen [security-portfolio](https://github.com/LuciusArameusSeneca/security-portfolio).
 
@@ -9,7 +9,7 @@ Dieses Repository sammelt JEDE finale Stufe-3-Loesung der CryptoJobHunter-KI-Pip
 
 If this archive was useful to you, donations are welcome - siehe [security-portfolio-README](https://github.com/LuciusArameusSeneca/security-portfolio#support-this-work--sponsor) fuer die Empfangsadressen.
 
-| Datum | Titel | Stufe-1-Score | Eintrag |
+| Datum | Titel | Bewertung | Eintrag |
 |---|---|---|---|
 | 2026-09-05 | From Aggregate Signatures to Aggregate Proofs: A Survey of Ethereum's Post-Quantum Consensus | 80/100 | [Eintrag](entries/20260905_113917_job358_From_Aggregate_Signatures_to_Aggregate_Proofs_A_Survey_of_Et.md) |
 | 2026-09-05 | Create Zcash Ecosystem Digest - August 23rd | 75/100 | [Eintrag](entries/20260905_113924_job550_Create_Zcash_Ecosystem_Digest_-_August_23rd.md) |

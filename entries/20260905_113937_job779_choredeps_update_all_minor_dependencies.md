@@ -2,10 +2,10 @@
 
 **Quelle:** [github](https://github.com/cds-snc/gc-articles/pull/2763)  
 **Datum:** 2026-09-05  
-**Stufe-1-Bewertung:** 72/100  
+**Bewertung:** 72/100  
 **Einordnung:** Zusaetzlich als moegliche Web3-Security-/Smart-Contract-Audit-Aufgabe erkannt (Chain: solana) - eine kuratierte, manuell gegengeprüfte Fassung findet sich ggf. im [security-portfolio](https://github.com/LuciusArameusSeneca/security-portfolio).
 
-> ⚠️ **Automatisierte Rohausgabe eines lokal/offline laufenden KI-Modells (qwen2.5-coder:7b, Stufe 3).** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder Halluzinationen enthalten - insbesondere erfundenen Code, der auf im Auftrag nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
+> ⚠️ **Automatisierte Rohausgabe eines lokal/offline laufenden KI-Modells.** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder Halluzinationen enthalten - insbesondere erfundenen Code, der auf im Auftrag nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
 
 ---
 
@@ -21,7 +21,7 @@ Diese PR aktualisiert alle minor Dependencies in der GitHub-Repository WordPress
 | [@wordpress/blocks](https://redirect.github.com/WordPress/gutenberg/tree/HEAD/packages/blocks) ([source](https://redirect.github.com/WordPress/gutenberg/tree/HEAD/packages/blocks)) | [`15.24.0` → `15.26.0`](https://renovatebot.com/diffs/npm/@wordpress%2fblocks/15.24.0/15.26.0) |
 | [@wordpress/dependency-extraction-webpack-plugin](https://redirect.github.com/WordPress/gutenberg/tree/HEAD/packages/dependency-extraction-webpack-plugin) ([source](https://redirect.github.com/WordPress/gutenberg/tree/HEAD/packages/dependency-extraction-webpack-plugin)) | [`6.51.0` → `6.53.0`](https://renovatebot.com/diffs/npm/@wordpress%2fdependency-extraction-webpack-plugin/6.
 
-## Finale Stufe-3-Loesung (unverifiziert)
+## Automatisierte KI-Loesung (unverifiziert)
 
 Loesungsentwurf:
 
@@ -74,4 +74,4 @@ This script is a simple example and should be expanded with more complex logic f
 
 ---
 
-*Automatisch von der CryptoJobHunter-KI-Pipeline erstellt und archiviert (3-stufige Analyse: Zusammenfassung, Loesungsentwurf mit Code-Kontext, verfeinerte Loesung). Dokumentiert einen real gefundenen GitHub-Auftrag.*
+*Automatisiert erzeugt und archiviert - dokumentiert einen real gefundenen GitHub-Auftrag.*

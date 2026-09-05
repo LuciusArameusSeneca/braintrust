@@ -2,10 +2,10 @@
 
 **Quelle:** [github](https://github.com/Ubwenge-Lab/back-end/pull/133)  
 **Datum:** 2026-09-05  
-**Stufe-1-Bewertung:** 85/100  
+**Bewertung:** 85/100  
 **Einordnung:** Kein Security-/Audit-Bezug erkannt - allgemeiner GitHub-Auftrag.
 
-> ⚠️ **Automatisierte Rohausgabe eines lokal/offline laufenden KI-Modells (qwen2.5-coder:7b, Stufe 3).** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder Halluzinationen enthalten - insbesondere erfundenen Code, der auf im Auftrag nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
+> ⚠️ **Automatisierte Rohausgabe eines lokal/offline laufenden KI-Modells.** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder Halluzinationen enthalten - insbesondere erfundenen Code, der auf im Auftrag nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
 
 ---
 
@@ -42,7 +42,7 @@ In total, **239 backend routes** were checked.
 | `POST /auth/otp/verify` | No | Added |
 | `POST /auth/otp/resend` | No
 
-## Finale Stufe-3-Loesung (unverifiziert)
+## Automatisierte KI-Loesung (unverifiziert)
 
 ```typescript
 import { Injectable } from '@nestjs/common';
@@ -96,4 +96,4 @@ Diese Funktionen sind einfach zu implementieren mit bekannten Bibliotheken wie `
 
 ---
 
-*Automatisch von der CryptoJobHunter-KI-Pipeline erstellt und archiviert (3-stufige Analyse: Zusammenfassung, Loesungsentwurf mit Code-Kontext, verfeinerte Loesung). Dokumentiert einen real gefundenen GitHub-Auftrag.*
+*Automatisiert erzeugt und archiviert - dokumentiert einen real gefundenen GitHub-Auftrag.*

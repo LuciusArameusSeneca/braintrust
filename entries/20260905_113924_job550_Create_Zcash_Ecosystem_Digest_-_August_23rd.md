@@ -2,10 +2,10 @@
 
 **Quelle:** [github](https://github.com/ZecHub/zechub/pull/2006)  
 **Datum:** 2026-09-05  
-**Stufe-1-Bewertung:** 75/100  
+**Bewertung:** 75/100  
 **Einordnung:** Kein Security-/Audit-Bezug erkannt - allgemeiner GitHub-Auftrag.
 
-> ⚠️ **Automatisierte Rohausgabe eines lokal/offline laufenden KI-Modells (qwen2.5-coder:7b, Stufe 3).** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder Halluzinationen enthalten - insbesondere erfundenen Code, der auf im Auftrag nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
+> ⚠️ **Automatisierte Rohausgabe eines lokal/offline laufenden KI-Modells.** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder Halluzinationen enthalten - insbesondere erfundenen Code, der auf im Auftrag nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
 
 ---
 
@@ -21,7 +21,7 @@ Atunto nipasẹ [Rems](https://x.com/rems_gk) ati Itumọ si ede Yoruba nipasẹ
 
 # Àwọn
 
-## Finale Stufe-3-Loesung (unverifiziert)
+## Automatisierte KI-Loesung (unverifiziert)
 
 ### Zcash Ecosystem Digest - August 23rd
 
@@ -72,4 +72,4 @@ Der ZCash-Community und die ZCash-Foundation haben einen wichtigen Aspekt des On
 
 ---
 
-*Automatisch von der CryptoJobHunter-KI-Pipeline erstellt und archiviert (3-stufige Analyse: Zusammenfassung, Loesungsentwurf mit Code-Kontext, verfeinerte Loesung). Dokumentiert einen real gefundenen GitHub-Auftrag.*
+*Automatisiert erzeugt und archiviert - dokumentiert einen real gefundenen GitHub-Auftrag.*

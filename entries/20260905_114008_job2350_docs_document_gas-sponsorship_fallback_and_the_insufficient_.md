@@ -2,10 +2,10 @@
 
 **Quelle:** [github](https://github.com/KeeperHub/keeperhub/pull/2268)  
 **Datum:** 2026-09-05  
-**Stufe-1-Bewertung:** 85/100  
+**Bewertung:** 85/100  
 **Einordnung:** Kein Security-/Audit-Bezug erkannt - allgemeiner GitHub-Auftrag.
 
-> ⚠️ **Automatisierte Rohausgabe eines lokal/offline laufenden KI-Modells (qwen2.5-coder:7b, Stufe 3).** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder Halluzinationen enthalten - insbesondere erfundenen Code, der auf im Auftrag nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
+> ⚠️ **Automatisierte Rohausgabe eines lokal/offline laufenden KI-Modells.** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder Halluzinationen enthalten - insbesondere erfundenen Code, der auf im Auftrag nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
 
 ---
 
@@ -28,7 +28,7 @@ The fallback condition is `insufficient_balance`, which triggers the `insufficie
 - **When sponsorship falls back** section added: new **When sponsorship falls back** section — the fallback conditions, two observable outcomes (wallet-pays success vs `insufficient_balance` failure), and both remedies (fund the named address / restore sponsorship conditions)
 - **docs/keeper-runs/error-codes.md**: document the structured `insufficient
 
-## Finale Stufe-3-Loesung (unverifiziert)
+## Automatisierte KI-Loesung (unverifiziert)
 
 ### `docs/wallet-management/gas.md`
 
@@ -107,4 +107,4 @@ This solution leverages known Ethereum libraries (ethers.js) and does not involv
 
 ---
 
-*Automatisch von der CryptoJobHunter-KI-Pipeline erstellt und archiviert (3-stufige Analyse: Zusammenfassung, Loesungsentwurf mit Code-Kontext, verfeinerte Loesung). Dokumentiert einen real gefundenen GitHub-Auftrag.*
+*Automatisiert erzeugt und archiviert - dokumentiert einen real gefundenen GitHub-Auftrag.*

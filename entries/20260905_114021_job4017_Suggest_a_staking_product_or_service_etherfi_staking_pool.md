@@ -2,10 +2,10 @@
 
 **Quelle:** [github](https://github.com/ethereum/ethereum-org-website/issues/19098)  
 **Datum:** 2026-09-05  
-**Stufe-1-Bewertung:** 85/100  
+**Bewertung:** 85/100  
 **Einordnung:** Kein Security-/Audit-Bezug erkannt - allgemeiner GitHub-Auftrag.
 
-> ⚠️ **Automatisierte Rohausgabe eines lokal/offline laufenden KI-Modells (qwen2.5-coder:7b, Stufe 3).** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder Halluzinationen enthalten - insbesondere erfundenen Code, der auf im Auftrag nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
+> ⚠️ **Automatisierte Rohausgabe eines lokal/offline laufenden KI-Modells.** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder Halluzinationen enthalten - insbesondere erfundenen Code, der auf im Auftrag nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
 
 ---
 
@@ -51,7 +51,7 @@ https://ether.fi/
 
 Yes. Smart contracts: https://github
 
-## Finale Stufe-3-Loesung (unverifiziert)
+## Automatisierte KI-Loesung (unverifiziert)
 
 ```javascript
 // Import necessary libraries and modules
@@ -113,4 +113,4 @@ async function checkInvariantViolationsInCode(erc1155, contract) {
 
 ---
 
-*Automatisch von der CryptoJobHunter-KI-Pipeline erstellt und archiviert (3-stufige Analyse: Zusammenfassung, Loesungsentwurf mit Code-Kontext, verfeinerte Loesung). Dokumentiert einen real gefundenen GitHub-Auftrag.*
+*Automatisiert erzeugt und archiviert - dokumentiert einen real gefundenen GitHub-Auftrag.*
