@@ -16,3 +16,4 @@ If this archive was useful to you, donations are welcome - siehe [security-portf
 | 2026-09-05 | chore: release v0.26.0 | 85/100 | [Eintrag](entries/20260905_113930_job587_chore_release_v0260.md) |
 | 2026-09-05 | chore(deps): update all minor dependencies | 72/100 | [Eintrag](entries/20260905_113937_job779_choredeps_update_all_minor_dependencies.md) |
 | 2026-09-05 | R-#163: Referral Program for learn.tg | 75/100 | [Eintrag](entries/20260905_113943_job784_R-163_Referral_Program_for_learntg.md) |
+| 2026-09-05 | Renovate update admin minor and patch updates (PHP 8.2) | 75/100 | [Eintrag](entries/20260905_113949_job785_Renovate_update_admin_minor_and_patch_updates_PHP_82.md) |
