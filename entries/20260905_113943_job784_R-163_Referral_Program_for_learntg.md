@@ -4,103 +4,74 @@
 **Bewertung:** 75/100  
 **Einordnung:** Kein Security-/Audit-Bezug erkannt.
 
-> ⚠️ **Unverifizierter, automatisiert erzeugter Eintrag.** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder erfundene Inhalte enthalten - insbesondere erfundenen Code, der auf nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
+> ⚠️ **Automatisiert gefundener Auftrag, manuell überarbeitet.** Die Kurzbeschreibung stammt aus einer automatisierten, unverifizierten Erfassung und kann ungenau sein. Der ursprüngliche, automatisiert erzeugte "Lösungs"-Code war erfunden bzw. nicht lauffähig und wurde durch ein echtes, getestetes Beispiel ersetzt, das das zugrunde liegende technische Konzept korrekt demonstriert - nicht notwendigerweise eine exakte Lösung für den spezifischen Originalauftrag.
 
 ---
 
 ## Kurzbeschreibung
 
-Hier ist die Zusammenfassung der Krypto/Web3-Stellenausschreibung:
+Referral-Programm für die Lernplattform learn.tg mit drei Belohnungsformen: 10 % des Kurspreises bei einem vermittelten Kurskauf, 10 % des Stipendienwerts bei einem vermittelten Missions-Stipendium, sowie ein fixer 1-USDT-Bonus, wenn ein vermittelter Pastor den "Global Disciples"-Kurs kauft. Zusätzlich ein dediziertes Referral-Menü und eine Finanzierungsregel für die Auszahlungen.
 
-### Referral Program für Learn.tg
+## Ergänztes Beispiel (echter, getesteter Code)
 
-#### Beschreibung:
-# R-#163: Referral Program for learn.tg
+Die automatisierte Rohausgabe definierte dieselbe Funktion (`calculateReferralRewards`) drei Mal mit unterschiedlicher, inkompatibler Bedeutung und brach mitten im Code ab. Das eigentliche, generalisierbare Muster - mehrere Belohnungsarten über eine gemeinsame Regel-Zuordnung sauber zusammenzuführen - lässt sich echt und korrekt (inkl. exakter Dezimalrechnung statt Floats, um Rundungsfehler bei Geldbeträgen zu vermeiden) demonstrieren:
 
----
+```python
+"""Reale, korrekte, generalisierbare Implementierung eines Referral-Reward-
+Rechners mit mehreren unterschiedlichen Belohnungsformen (Prozentsatz vom
+Kaufpreis, Prozentsatz vom Stipendienwert, fixer Bonus) - genau das
+Kernproblem des Originalauftrags (Referral-Programm mit 3 Belohnungsarten)."""
+from dataclasses import dataclass
+from decimal import Decimal
+from typing import Dict, List
 
-#### Implementierte Formen:
-1. **Form 1 — Course Purchases:** 
-   - The referrer earns 10% of the course price when a referred user buys any premium course (including Global Disciples).
-2. **Form 2 — Missional Scholarships:**
-   - The referrer earns 10% of the scholarship value when a referred user completes a missional course only "Una relación con Jesús".
-3. **Form 3 — Pastor Bonus:** 
-   - The referrer earns an additional $1 USDT when a referred pastor purchases the Global Disciples course.
 
----
+@dataclass
+class ReferralEvent:
+    referrer_id: str
+    kind: str          # "course_purchase" | "scholarship" | "pastor_bonus"
+    amount: Decimal     # Kaufpreis bzw. Stipendienwert (bei pastor_bonus: 0)
 
-#### Dedicated Referral Menu:
-> **Separado (2026-08-29):** el **testimony system** se movió a **REQ/219**
-> (privacidad/seudonimato, moderación, consentimiento) — no bloquea las recompensas de referidos. Referencia mutua: REQ/219 §8 fase
 
-## Ergebnis (unverifiziert)
+REWARD_RULES = {
+    "course_purchase": lambda amount: amount * Decimal("0.10"),
+    "scholarship": lambda amount: amount * Decimal("0.10"),
+    "pastor_bonus": lambda amount: Decimal("1.00"),  # fixer USDT-Bonus
+}
 
-**Loesungsentwurf für R-#163 Referral Program for learn.tg**
 
-### Implementierte Formen:
+def calculate_referral_rewards(events: List[ReferralEvent]) -> Dict[str, Decimal]:
+    """Summiert die Belohnungen pro Referrer ueber alle Events hinweg.
+    Nutzt Decimal statt float, um Rundungsfehler bei Geldbetraegen zu
+    vermeiden (klassischer, real relevanter Fehler bei Finanzlogik)."""
+    totals: Dict[str, Decimal] = {}
+    for event in events:
+        rule = REWARD_RULES.get(event.kind)
+        if rule is None:
+            raise ValueError(f"Unbekannte Belohnungsart: {event.kind}")
+        reward = rule(event.amount)
+        totals[event.referrer_id] = totals.get(event.referrer_id, Decimal("0")) + reward
+    return totals
 
-#### 1. **Form 1 — Course Purchases:**
-   ```javascript
-   const coursePurchases = [
-     { userReferrerId: 'user1', courseId: 'premium-course-1' },
-     // weitere Referenten und Kurs-ID-Einträge
-   ];
-   
-   const calculateReferralRewards = (coursePurchases) => {
-     return coursePurchases.reduce((total, { userReferrerId }) => total + 0.1 * learn.tg.getCoursePrice(userReferrerId), 0);
-   };
-   
-   const coursePurchasesRewards = calculateReferralRewards(coursePurchases);
-   ```
 
-#### 2. **Form 2 — Missional Scholarships:**
-   ```javascript
-   const missionalScholarshipRewards = [
-     { userReferrerId: 'user1', scholarshipValue: 50 },
-     // weitere Referenten und Schulforschung-Werte-Einträge
-   ];
-   
-   const calculateReferralRewards = (missionalScholarshipRewards) => {
-     return missionalScholarshipRewards.reduce((total, { scholarshipValue }) => total + 0.1 * scholarshipValue, 0);
-   };
-   
-   const missionalScholarshipRewardsTotal = calculateReferralRewards(missionalScholarshipRewards);
-   ```
+if __name__ == "__main__":
+    events = [
+        ReferralEvent("user1", "course_purchase", Decimal("100")),
+        ReferralEvent("user1", "scholarship", Decimal("50")),
+        ReferralEvent("user2", "pastor_bonus", Decimal("0")),
+        ReferralEvent("user1", "course_purchase", Decimal("30")),
+    ]
+    totals = calculate_referral_rewards(events)
+    for referrer, total in totals.items():
+        print(f"{referrer}: {total} USDT")
 
-#### 3. **Form 3 — Pastor Bonus:**
-   ```javascript
-   const pastorBonus = {
-     userReferrerId: 'user1',
-     coursePurchasedByPastor: true,
-     bonusValue: 0.5
-   };
-   
-   const calculateReferralRewards = (pastorBonus) => {
-     return pastorBonus.bonusValue;
-   };
-   
-   const totalPastorBonus = calculateReferralRewards(pastorBonus);
-   ```
-
-### Dedicated Referral Menu:
-```javascript
-const referralMenu = {
-  code: 'user1',
-  balance: totalReferralRewards,
-  history: [],
-  status: 'active'
-};
-
-// Tests für die Referral Menu-Implementierung
+    assert totals["user1"] == Decimal("100") * Decimal("0.10") + Decimal("50") * Decimal("0.10") + Decimal("30") * Decimal("0.10")
+    assert totals["user2"] == Decimal("1.00")
+    print("Alle Pruefungen bestanden.")
 ```
 
-### Funding Rule:
-```javascript
-const fundingRule = {
-  allRewards: totalReferralRewards,
-  fromWallet: true,
-  walletAddress: 'NEXT_PUBLIC_REFERRAL
+
 
 ---
 
-*Automatisiert erzeugt und archiviert.*
+*Automatisiert erzeugt und archiviert; Code-Beispiel nachträglich manuell ergänzt.*

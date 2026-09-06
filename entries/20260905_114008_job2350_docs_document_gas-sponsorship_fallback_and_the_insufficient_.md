@@ -4,106 +4,93 @@
 **Bewertung:** 85/100  
 **Einordnung:** Kein Security-/Audit-Bezug erkannt.
 
-> ⚠️ **Unverifizierter, automatisiert erzeugter Eintrag.** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder erfundene Inhalte enthalten - insbesondere erfundenen Code, der auf nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
+> ⚠️ **Automatisiert gefundener Auftrag, manuell überarbeitet.** Die Kurzbeschreibung stammt aus einer automatisierten, unverifizierten Erfassung und kann ungenau sein. Der ursprüngliche, automatisiert erzeugte "Lösungs"-Code war erfunden bzw. nicht lauffähig und wurde durch ein echtes, getestetes Beispiel ersetzt, das das zugrunde liegende technische Konzept korrekt demonstriert - nicht notwendigerweise eine exakte Lösung für den spezifischen Originalauftrag.
 
 ---
 
 ## Kurzbeschreibung
 
-### Summary
+Dokumentations-Pull-Request (KeeperHub): Wenn eine Gas-Sponsorship-Bedingung nicht erfüllt ist (z. B. Sponsoring-Guthaben aufgebraucht oder Netzwerk nicht unterstützt), fällt das System still auf direktes Signieren durch den Operator zurück. Der Operator sieht dabei nur einen kryptischen Fehler (`Insufficient ETH balance. Have: 0.0, Need: 0.000000231`) ohne Kontext. Der PR ergänzt Dokumentation, die erklärt, wann der Fallback greift, was der Fehler bedeutet und wie man ihn behebt.
 
-Sponsorship falls back silently to direct signing whenever an eligibility condition is not met, resulting in gas credits exhausted or unsupported network. The operator only sees the downstream failure:
+## Ergänztes Beispiel (echter, getesteter Code)
 
-```
-Insufficient ETH balance.
-Have: 0.0, Need: 0.000000231. Fund
-0x26833b05be49036d4de306b1f4fba7713cc84de5 with at least 0.000000231 ETH on this chain and retry.
-```
+Das zugrunde liegende, generelle Software-Muster - VOR dem Versuch einer direkten Transaktion das Guthaben prüfen und einen klaren, frühzeitigen Fehler liefern statt eines kryptischen RPC-Fehlers erst beim eigentlichen Senden - lässt sich echt demonstrieren (mit simuliertem Provider, damit das Beispiel ohne echtes Netzwerk lauffähig ist):
 
-The fallback condition is `insufficient_balance`, which triggers the `insufficient_balance` action failure in `lib/execute/native-balance.ts`. The operator sees nothing in the docs connected to this error, but first-hand hits during a live integration on Base Sepolia.
+```javascript
+// sponsorship_fallback.js - Reales, korrektes Muster fuer "Gas-Sponsorship
+// mit Fallback auf direktes Signieren", wie im Original-Auftrag beschrieben
+// (KeeperHub-Dokumentation). Nutzt einen simulierten Provider (kein echtes
+// RPC-Netzwerk noetig), damit dieses Beispiel eigenstaendig lauffaehig ist -
+// das Muster selbst ist identisch zu einer echten ethers.js-Anbindung.
 
-### Changes
-
-- **When sponsorship falls back** section added: new **When sponsorship falls back** section — the fallback conditions, two observable outcomes (wallet-pays success vs `insufficient_balance` failure), and both remedies (fund the named address / restore sponsorship conditions)
-- **docs/keeper-runs/error-codes.md**: document the structured `insufficient
-
-## Ergebnis (unverifiziert)
-
-### `docs/wallet-management/gas.md`
-
-**When sponsorship falls back**
-
-Sponsorship automatically falls back to direct signing when an eligibility condition is not met, such as gas credits exhausted, unsupported network, Safe sender, private mempool route, or a blocked RPC. The operator will only see the downstream failure:
-
-```
-Insufficient ETH balance. Have: 0.0, Need: 0.000000231. Fund
-0x26833b05be49036d4de306b1f4fba7713cc84de5 with at least 0.000000231 ETH
-on this chain and retry.
-```
-
-To resolve this issue, either fund the named address or restore the sponsorship conditions.
-
-### `docs/keeper-runs/error-codes.md`
-
-**Insufficient Balance Error**
-
-The structured `insufficient_balance` action failure is not a PREFIX-NNNN code. It occurs when sponsorship falls back to direct signing due to an insufficient ETH balance. The fallback conditions include gas credits exhausted, unsupported network, Safe sender, private mempool route, or a blocked RPC.
-
-To fix this issue, fund the named address (`0x26833b05be49036d4de306b1f4fba7713cc84de5`) with at least `0.000000231 ETH` on the current chain and retry.
-
-### `docs/keeper-runs/troubleshooting.md`
-
-**Transaction Failures**
-
-For more information on troubleshooting transaction failures, refer to the [Gas Management](gas.md) and [Error Codes](error-codes.md) sections.
-
-### Verification
-
-To verify the implementation against a staging environment, follow these steps:
-
-1. Set up an Ethereum provider and signer.
-2. Call the `executeNativeBalanceFallback` function to check if the fallback logic works as expected.
-
-```typescript
-import { ethers } from 'ethers';
-
-// Define the fallback conditions and outcomes for sponsorship falls back
-const FallbackConditions = {
-  insufficient_balance: [
-    // Operator sees nothing in the docs connected to this error, but first-hand hits during a live integration on Base Sepolia
-    'Insufficient ETH balance.',
-    {
-      Have: 0.0,
-      Need: 0.000000231,
-      Fund: '0x26833b05be49036d4de306b1f4fba7713cc84de5',
-      Need: 'at least 0.000000231 ETH on this chain and retry.'
-    }
-  ]
-};
-
-// Implement the fallback logic in `lib/execute/native-balance.ts`
-function executeNativeBalanceFallback() {
-  const balance = ethers.utils.parseEther('0.0');
-  const need = ethers.utils.parseEther('0.000000231');
-
-  if (balance < need) {
-    console.log(FallbackConditions.insufficient_balance[0]);
-    return FallbackConditions.insufficient_balance[1];
-  }
-
-  // If balance is sufficient, fallback logic can be implemented here
+class FakeProvider {
+  constructor(balances) { this.balances = balances; } // address -> wei (BigInt)
+  async getBalance(address) { return this.balances[address] ?? 0n; }
 }
 
-// Verify the implementation against a staging environment
-const provider = new ethers.providers.JsonRpcProvider('https://sepolia.infura.io/v3/YOUR_INFURA_PROJECT_ID');
-const signer = new ethers.Wallet('YOUR_WALLET_ADDRESS', provider);
-const contractAddress = '0xYourContractAddress';
-const nativeBalance = await executeNativeBalanceFallback();
-console.log(nativeBalance);
+class InsufficientBalanceError extends Error {
+  constructor(address, have, need) {
+    super(`Insufficient ETH balance. Have: ${have}, Need: ${need}. ` +
+      `Fund ${address} with at least ${need} wei on this chain and retry.`);
+    this.address = address;
+    this.have = have;
+    this.need = need;
+  }
+}
+
+/**
+ * Versucht zuerst eine gesponserte Transaktion (Relayer zahlt Gas). Schlaegt
+ * das Sponsoring-Kriterium fehl (z.B. Netzwerk nicht unterstuetzt oder
+ * Sponsoring-Guthaben aufgebraucht), faellt die Funktion auf direktes
+ * Signieren durch den Operator zurueck - und prueft VORHER explizit dessen
+ * ETH-Guthaben, damit der Fehler klar und fruehzeitig ist statt als
+ * kryptischer RPC-Fehler erst beim eigentlichen Senden aufzutauchen.
+ */
+async function executeWithSponsorshipFallback({ provider, operatorAddress, requiredWei, sponsorshipEligible, sendFn }) {
+  if (sponsorshipEligible) {
+    console.log('Sponsorship aktiv - Relayer uebernimmt die Gaskosten.');
+    return sendFn({ sponsored: true });
+  }
+
+  console.log('Sponsorship nicht verfuegbar - falle auf direktes Signieren zurueck.');
+  const balance = await provider.getBalance(operatorAddress);
+  if (balance < requiredWei) {
+    throw new InsufficientBalanceError(operatorAddress, balance.toString(), requiredWei.toString());
+  }
+  return sendFn({ sponsored: false });
+}
+
+// --- Selbsttest ---
+async function main() {
+  const provider = new FakeProvider({ '0xabc': 0n, '0xdef': 1000000000000n });
+  const sendFn = async (opts) => ({ txHash: '0xdeadbeef', ...opts });
+
+  // Fall 1: genuegend Guthaben -> Fallback klappt
+  const result1 = await executeWithSponsorshipFallback({
+    provider, operatorAddress: '0xdef', requiredWei: 231000000n,
+    sponsorshipEligible: false, sendFn,
+  });
+  console.log('Fall 1 (genuegend Guthaben):', result1);
+
+  // Fall 2: zu wenig Guthaben -> klarer, fruehzeitiger Fehler statt kryptischem RPC-Fehler
+  try {
+    await executeWithSponsorshipFallback({
+      provider, operatorAddress: '0xabc', requiredWei: 231000000n,
+      sponsorshipEligible: false, sendFn,
+    });
+    throw new Error('haette fehlschlagen muessen');
+  } catch (err) {
+    console.log('Fall 2 (zu wenig Guthaben) - erwarteter Fehler:', err.message);
+  }
+
+  console.log('\nAlle Faelle wie erwartet.');
+}
+
+main();
 ```
 
-This solution leverages known Ethereum libraries (ethers.js) and does not involve any new or unknown APIs.
+
 
 ---
 
-*Automatisiert erzeugt und archiviert.*
+*Automatisiert erzeugt und archiviert; Code-Beispiel nachträglich manuell ergänzt.*

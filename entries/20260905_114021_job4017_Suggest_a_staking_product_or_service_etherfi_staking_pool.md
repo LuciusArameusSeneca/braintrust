@@ -4,112 +4,85 @@
 **Bewertung:** 85/100  
 **Einordnung:** Kein Security-/Audit-Bezug erkannt.
 
-> ⚠️ **Unverifizierter, automatisiert erzeugter Eintrag.** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder erfundene Inhalte enthalten - insbesondere erfundenen Code, der auf nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
+> ⚠️ **Automatisiert gefundener Auftrag, manuell überarbeitet.** Die Kurzbeschreibung stammt aus einer automatisierten, unverifizierten Erfassung und kann ungenau sein. Der ursprüngliche, automatisiert erzeugte "Lösungs"-Code war erfunden bzw. nicht lauffähig und wurde durch ein echtes, getestetes Beispiel ersetzt, das das zugrunde liegende technische Konzept korrekt demonstriert - nicht notwendigerweise eine exakte Lösung für den spezifischen Originalauftrag.
 
 ---
 
 ## Kurzbeschreibung
 
-**Stellenausschreibung: Suggest a staking product or service for ether.fi**
+Pull-Request an ethereum.org, der ether.fi als Liquid-Staking-Anbieter in ein Verzeichnis von Staking-Produkten einträgt (Logo, Beschreibung, Link). Laut Beschreibung: nicht-custodial Liquid Staking, Node-Operatoren halten die Validator-Schlüssel, Einzahlungen prägen eETH, das zu weETH gewrappt werden kann. Dies ist ein reiner Verzeichnis-/Listing-Eintrag, keine Programmieraufgabe am eigentlichen Protokoll.
 
-**Titel:** Ether.fi - Staking Pool
+## Ergänztes Beispiel (echter, getesteter Code)
 
-**Beschreibung:** This replaces #11568, which @wackerow reviewed in June 2024 ("Overall this look good... Welcome a PR for this addition") and @minimalsm closed once the thread went quiet. The client diversity numbers that were missing then are included below.
+Statt des in der automatisierten Rohausgabe erfundenen, gegenstandslosen "Invariant-Checkers" mit nicht existierenden Smart-Contract-Pfaden: eine echte, korrekte Demonstration des tatsächlichen Kernmechanismus hinter Liquid-Staking-Tokens wie eETH/weETH - Nutzer erhalten Anteile (shares) statt eines fixen Token-Betrags, deren ETH-Wert mit eintreffenden Staking-Rewards automatisch steigt:
 
-I work at ether.fi. A PR is ready to open against this issue.
+```python
+"""Reale, korrekte Implementierung des Kernmechanismus hinter Liquid-
+Staking-Tokens im Stil von eETH/weETH (ether.fi) oder stETH (Lido): Nutzer
+zahlen ETH ein und erhalten ANTEILE (shares) statt eines fixen Token-
+Betrags. Der Wert eines Anteils steigt mit der Zeit (Staking-Rewards
+fliessen in den Pool, ohne dass sich die Anzahl der Anteile aendert) -
+das ist das "Rebase"-freie Rechenmodell, das weETH von eETH unterscheidet
+(eETH selbst ist rebasing, weETH ist die nicht-rebasende, Exchange-Rate-
+basierte Wrapper-Variante fuer DeFi-Kompatibilitaet)."""
+from decimal import Decimal
 
----
 
-### Project name
+class LiquidStakingPool:
+    def __init__(self):
+        self.total_pooled_eth = Decimal("0")
+        self.total_shares = Decimal("0")
+        self.shares_by_user: dict[str, Decimal] = {}
 
-ether.fi
+    def _exchange_rate(self) -> Decimal:
+        """ETH-Wert pro Anteil. Startet bei 1:1, steigt wenn Rewards
+        gutgeschrieben werden, ohne dass sich total_shares aendert."""
+        if self.total_shares == 0:
+            return Decimal("1")
+        return self.total_pooled_eth / self.total_shares
 
-### Product type
+    def deposit(self, user: str, eth_amount: Decimal) -> Decimal:
+        """Nutzer zahlt ETH ein, erhaelt Anteile zum AKTUELLEN Wechselkurs
+        (nicht 1:1, sobald Rewards den Pool-Wert erhoeht haben)."""
+        rate = self._exchange_rate()
+        shares_minted = eth_amount / rate
+        self.total_pooled_eth += eth_amount
+        self.total_shares += shares_minted
+        self.shares_by_user[user] = self.shares_by_user.get(user, Decimal("0")) + shares_minted
+        return shares_minted
 
-Staking pool
+    def accrue_staking_rewards(self, reward_eth: Decimal) -> None:
+        """Staking-Rewards erhoehen NUR den Pool-Wert - total_shares bleibt
+        unveraendert, wodurch jeder bestehende Anteil automatisch mehr
+        ETH wert wird (das ist der ganze Trick des Modells)."""
+        self.total_pooled_eth += reward_eth
 
-### Logo
+    def balance_in_eth(self, user: str) -> Decimal:
+        shares = self.shares_by_user.get(user, Decimal("0"))
+        return shares * self._exchange_rate()
 
-Brand assets: https://github.com/etherfi-protocol/design_assets
 
-The PR adds a monochrome `currentColor` glyph matching the other product glyphs, at `src/components/icons/staking/ether-fi-glyph.svg`.
+if __name__ == "__main__":
+    pool = LiquidStakingPool()
 
----
+    shares_a = pool.deposit("alice", Decimal("100"))
+    print(f"Alice zahlt 100 ETH ein, erhaelt {shares_a:.2f} Anteile (Kurs 1:1 beim Start)")
+    assert pool.balance_in_eth("alice") == Decimal("100")
 
-### Description
+    pool.accrue_staking_rewards(Decimal("10"))  # +10% Rewards auf den Pool
+    print(f"Nach Staking-Rewards: Alice's Anteile sind jetzt {pool.balance_in_eth('alice')} ETH wert")
+    assert pool.balance_in_eth("alice") == Decimal("110")
 
-Non-custodial liquid staking, run by public smart contracts. Node operators hold the validator keys, and the protocol contracts trigger exits as liquidity requires. Staking mints eETH, which wraps to weETH for use across DeFi.
+    shares_b = pool.deposit("bob", Decimal("110"))
+    print(f"Bob zahlt 110 ETH ein (nach den Rewards), erhaelt nur {shares_b:.2f} Anteile (nicht 110!)")
+    assert shares_b == Decimal("100")  # Bob bekommt WENIGER Anteile, weil der Kurs gestiegen ist
+    assert pool.balance_in_eth("bob") == Decimal("110")
 
-**Website**
-
-https://ether.fi/
-
----
-
-### If software is involved, is everything open source?
-
-Yes. Smart contracts: https://github
-
-## Ergebnis (unverifiziert)
-
-```javascript
-// Import necessary libraries and modules
-const { ethers } = require('ethers');
-const fs = require('fs');
-
-/**
- * Checks for invariant violations in the smart contract code.
- */
-async function checkInvariantViolations() {
-    // Load the ERC-1155 token standard
-    const erc1155 = await ethers.getContractFactory('ERC1155');
-    
-    // Load the smart contract code for staking
-    const stakingCodePath = 'path/to/staking_contract.sol';
-    const stakingContract = await ethers.getContractFactory('Staking');
-    
-    // Load the smart contract code for non-custodial liquid staking
-    const ncsCodePath = 'path/to/non_custodial_liquid_staking.sol';
-    
-    // Load the smart contract code for eETH wrapping to weETH
-    const ethWrapCodePath = 'path/to/eth_wrap_to_weeth.sol';
-    
-    // Load the smart contract code for node operators holding validator keys
-    const operatorKeysCodePath = 'path/to/operator_keys_contract.sol';
-
-    // Check for invariant violations in the staking contract code
-    const invariantViolationsStakingContract = await checkInvariantViolationsInCode(erc1155, stakingContract);
-    
-    // Check for invariant violations in the non-custodial liquid staking contract code
-    const invariantViolationsNcs = await checkInvariantViolationsInCode(erc1155, ncsContract);
-    
-    // Check for invariant violations in the eETH wrapping to weETH contract code
-    const invariantViolationsEthWrap = await checkInvariantViolationsInCode(erc1155, ethWrapContract);
-    
-    // Check for invariant violations in the node operator keys contract code
-    const invariantViolationsOperatorKeys = await checkInvariantViolationsInCode(erc1155, operatorKeysContract);
-    
-    // Return the results of all checks
-    return {
-        invariantViolationsStaking: invariantViolationsStakingContract,
-        invariantViolationsNcs: invariantViolationsNcs,
-        invariantViolationsEthWrap: invariantViolationsEthWrap,
-        invariantViolationsOperatorKeys: invariantViolationsOperatorKeys
-    };
-}
-
-/**
- * Checks for invariant violations in a given contract.
- */
-async function checkInvariantViolationsInCode(erc1155, contract) {
-    // Implement the logic to check for invariant violations
-    // This could involve deploying a test instance of the contract,
-    // invoking transactions, and verifying that invariants hold.
-    
-    return []; // Placeholder for actual invariant violations
-}
+    print("\nAlle Pruefungen bestanden: Anteile spiegeln korrekt den gestiegenen Wechselkurs wider.")
 ```
 
+
+
 ---
 
-*Automatisiert erzeugt und archiviert.*
+*Automatisiert erzeugt und archiviert; Code-Beispiel nachträglich manuell ergänzt.*

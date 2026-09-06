@@ -4,95 +4,91 @@
 **Bewertung:** 85/100  
 **Einordnung:** Kein Security-/Audit-Bezug erkannt.
 
-> ⚠️ **Unverifizierter, automatisiert erzeugter Eintrag.** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder erfundene Inhalte enthalten - insbesondere erfundenen Code, der auf nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
+> ⚠️ **Automatisiert gefundener Auftrag, manuell überarbeitet.** Die Kurzbeschreibung stammt aus einer automatisierten, unverifizierten Erfassung und kann ungenau sein. Der ursprüngliche, automatisiert erzeugte "Lösungs"-Code war erfunden bzw. nicht lauffähig und wurde durch ein echtes, getestetes Beispiel ersetzt, das das zugrunde liegende technische Konzept korrekt demonstriert - nicht notwendigerweise eine exakte Lösung für den spezifischen Originalauftrag.
 
 ---
 
 ## Kurzbeschreibung
 
-# Phone OTP Verification - PR Summary
+Pull-Request, der drei neue Telefon-OTP-Endpunkte hinzufügt (`POST /api/auth/otp/request`, `.../otp/verify`, `.../otp/resend`) in einem neuen `src/otp/`-Modul, isoliert von den bestehenden Auth-/E-Mail-Verifizierungs-Routen. Laut Beschreibung wurden 239 Backend-Routen auf mögliche Konflikte geprüft.
 
-This PR adds three new phone OTP endpoints:
+## Ergänztes Beispiel (echter, getesteter Code)
 
-- `POST /api/auth/otp/request`
-- `POST /api/auth/otp/verify`
-- `POST /api/auth/otp/resend`
+**Der reale, in der automatisierten Rohausgabe enthaltene Bug:** `verifyOtp()` erzeugte einen KOMPLETT NEUEN Zufalls-OTP und verglich diesen mit dem vom Nutzer eingegebenen Wert - zwei unabhängig gewürfelte Zufallswerte stimmen so gut wie nie überein, die Funktion hätte in der Praxis JEDE Verifizierung abgelehnt. Der korrekte Fix: den bei `requestOtp()` erzeugten Code tatsächlich speichern (mit Ablaufzeit) und bei `verifyOtp()` GENAU DIESEN gespeicherten Wert vergleichen. Lauffähig getestet mit Node.js:
 
-They live in a new `src/otp/` module and are mounted at `auth/otp`, so they appear next to the existing auth and email-verification routes in Swagger while keeping the OTP implementation isolated.
+```javascript
+// otp_service.js - Reale, lauffaehige Korrektur des im Original-Auftrag
+// gefundenen Bugs: verifyOtp() generierte einen NEUEN Zufalls-OTP und
+// verglich ihn mit dem empfangenen Wert - das schlaegt praktisch IMMER
+// fehl, weil zwei unabhaengig gewuerfelte Zufallswerte so gut wie nie
+// uebereinstimmen. Der Fix: den bei requestOtp() erzeugten OTP tatsaechlich
+// speichern (mit Ablaufzeit) und bei verifyOtp() GENAU DIESEN gespeicherten
+// Wert vergleichen, statt einen neuen zu wuerfeln.
 
-Commits included:
+const crypto = require('crypto');
 
-- `b1683f2` — OTP module
-- `8bd1867` — migration safety and rollout notes
-
---- 
-
-## API gap check
-
-The API was not running locally, so I checked the routes directly from the NestJS `@Controller` decorators. Swagger is generated from those same controllers.
-
-In total, **239 backend routes** were checked.
-
-### Auth routes: what existed and what this PR adds
-
-| Endpoint | On `dev` before this PR? | What this PR does |
-|---:|---:|---|
-| `POST /auth/otp/request` | No | Added |
-| `POST /auth/otp/verify` | No | Added |
-| `POST /auth/otp/resend` | No
-
-## Ergebnis (unverifiziert)
-
-```typescript
-import { Injectable } from '@nestjs/common';
-import * as crypto from 'crypto';
-
-@Injectable()
-export class OtpService {
-  generateOtp(): string {
-    return this.generateRandomString(6);
+class OtpService {
+  constructor(ttlMs = 5 * 60 * 1000) {
+    this.ttlMs = ttlMs;
+    this.store = new Map(); // phone -> { otp, expiresAt }
   }
 
-  async requestOtp(phone: number): Promise<string> {
-    const otp = await this.generateOtp();
-    // Simulate sending OTP to the phone
-    console.log(`OTP sent to ${phone}: ${otp}`);
-    return otp;
+  _generateOtp() {
+    // 6-stelliger numerischer Code, kryptographisch zufaellig.
+    return crypto.randomInt(0, 1000000).toString().padStart(6, '0');
   }
 
-  async verifyOtp(phone: number, receivedOtp: string): Promise<boolean> {
-    const generatedOtp = await this.generateOtp();
-    // Simulate receiving OTP from the phone
-    console.log(`Received OTP: ${receivedOtp}`);
-    return generatedOtp === receivedOtp;
+  requestOtp(phone) {
+    const otp = this._generateOtp();
+    this.store.set(phone, { otp, expiresAt: Date.now() + this.ttlMs });
+    return otp; // in echt: per SMS versenden, nicht zurueckgeben
   }
 
-  async resendOtp(phone: number): Promise<void> {
-    const otp = await this.generateOtp();
-    // Simulate sending OTP to the phone
-    console.log(`OTP resent to ${phone}: ${otp}`);
+  verifyOtp(phone, receivedOtp) {
+    const entry = this.store.get(phone);
+    if (!entry) return false;
+    if (Date.now() > entry.expiresAt) {
+      this.store.delete(phone);
+      return false; // abgelaufen
+    }
+    const isValid = entry.otp === receivedOtp;
+    if (isValid) this.store.delete(phone); // Einmalverwendung erzwingen
+    return isValid;
   }
 
-  private generateRandomString(length: number): string {
-    return crypto.randomBytes(Math.ceil(length / 2)).toString('hex').slice(0, length);
+  resendOtp(phone) {
+    return this.requestOtp(phone); // erzeugt bewusst einen NEUEN Code
   }
 }
+
+// --- Selbsttest: beweist, dass der Fix tatsaechlich funktioniert ---
+function assert(condition, message) {
+  if (!condition) throw new Error('FEHLGESCHLAGEN: ' + message);
+  console.log('OK: ' + message);
+}
+
+const service = new OtpService();
+
+const otp = service.requestOtp('+43111');
+assert(service.verifyOtp('+43111', otp) === true, 'korrekter OTP wird akzeptiert');
+
+const otp2 = service.requestOtp('+43222');
+assert(service.verifyOtp('+43222', '000000') === false || otp2 === '000000',
+  'falscher OTP wird abgelehnt (ausser Zufallstreffer 1:1.000.000)');
+
+assert(service.verifyOtp('+43111', otp) === false,
+  'derselbe OTP kann NICHT zweimal verwendet werden (Einmalverwendung)');
+
+const otp3 = service.requestOtp('+43333');
+service.store.get('+43333').expiresAt = Date.now() - 1; // simuliert Ablauf
+assert(service.verifyOtp('+43333', otp3) === false, 'abgelaufener OTP wird abgelehnt');
+
+console.log('\nAlle Pruefungen bestanden - im Gegensatz zur Original-Version, ' +
+  'die JEDEN Verifizierungsversuch ablehnte (Selbstvergleich mit neu erzeugtem Wert).');
 ```
 
-### Erklärung:
 
-- **generateOtp**: Diese Funktion generiert ein zufälliges 6-stelliges Zertifikat (OTP) mit der `crypto.randomBytes`-Methode.
-
-- **requestOtp**: Diese Methode sendet den generierten OTP an die angegebene Telefonnummer und loggt das Verhalten, einschließlich des gesendeten OTPs.
-
-- **verifyOtp**: Diese Funktion vergleicht den genannten zufälligen OTP mit dem, der von der Anwendung empfangen wurde und loggt das Verhalten.
-
-- **resendOtp**: Diese Methode sendet den generierten OTP an die angegebene Telefonnummer und loggt das Verhalten, einschließlich des gesendeten OTPs.
-
-- **generateRandomString**: Diese private Methode wird verwendet, um ein zufälliges Zeichenfolgenwert zu generieren. Sie ist in `requestOtp`, `verifyOtp` und `resendOtp` verwendet, um den OTP-Wert zu erzeugen.
-
-Diese Funktionen sind einfach zu implementieren mit bekannten Bibliotheken wie `crypto` für die Zufallszahlen generierung und `console.log()` zur Logik.
 
 ---
 
-*Automatisiert erzeugt und archiviert.*
+*Automatisiert erzeugt und archiviert; Code-Beispiel nachträglich manuell ergänzt.*

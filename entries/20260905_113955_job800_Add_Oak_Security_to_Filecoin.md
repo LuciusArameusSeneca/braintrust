@@ -4,92 +4,66 @@
 **Bewertung:** 80/100  
 **Einordnung:** Zusaetzlich als moegliche Web3-Security-/Smart-Contract-Audit-Aufgabe erkannt (Chain: evm) - eine kuratierte, manuell gegengeprüfte Fassung findet sich ggf. im [security-portfolio](https://github.com/LuciusArameusSeneca/security-portfolio).
 
-> ⚠️ **Unverifizierter, automatisiert erzeugter Eintrag.** Dieser Eintrag wurde OHNE manuelle Pruefung automatisch archiviert und kann Fehler oder erfundene Inhalte enthalten - insbesondere erfundenen Code, der auf nicht existierende Dateien/Funktionen verweist. Kein Ersatz fuer eine manuelle Verifikation.
+> ⚠️ **Automatisiert gefundener Auftrag, manuell überarbeitet.** Die Kurzbeschreibung stammt aus einer automatisierten, unverifizierten Erfassung und kann ungenau sein. Der ursprüngliche, automatisiert erzeugte "Lösungs"-Code war erfunden bzw. nicht lauffähig und wurde durch ein echtes, getestetes Beispiel ersetzt, das das zugrunde liegende technische Konzept korrekt demonstriert - nicht notwendigerweise eine exakte Lösung für den spezifischen Originalauftrag.
 
 ---
 
 ## Kurzbeschreibung
 
-## What changed
+Pull-Request, der den unabhängigen Web3-Audit-Anbieter "Oak Security" als neuen Eintrag in ein Verzeichnis von Security-Anbietern aufnimmt, inklusive eines Filecoin-spezifischen Listing-Eintrags (bezogen auf Oaks März-2023-Audit der Filecoin-EVM-Implementierung: `actors/evm`, `actors/eam`, `ref-fvm`). Erfordert laut Beschreibung u. a. das Einhalten eines festen CSV-Spaltenschemas (14/16/16 Spalten) für die drei betroffenen Tabellen.
 
-- Added Oak Security as a provider with its official website, social, repository, and contact details.
-- Added Oak Security's canonical Web3 security-audit offer.
-- Added a Filecoin-specific listing linked to Filecoin's official FEVM audit record and Oak's published report.
+## Ergänztes Beispiel (echter, getesteter Code)
 
-## Why
+Die automatisierte Rohausgabe importierte eine nicht existierende Bibliothek (`@grpc/proto-loader`) als angeblichen CSV-Parser - diese Bibliothek dient tatsächlich der gRPC-Protokolldefinition und hat mit CSV nichts zu tun. Eine echte, korrekte Spaltenanzahl-Prüfung mit der eingebauten `csv`-Bibliothek sieht so aus:
 
-Filecoin's official audit index records Oak Security's March 2023 audit of the Filecoin EVM implementation. The published scope covered `actors/evm`, `actors/eam`, `ref-fvm`, EVM opcodes, gas accounting, WASM integration, and related FEVM execution paths. Oak remains an active independent Web3 audit provider, so this fills a verified provider, offer, and Filecoin security-listing gap.
+```python
+"""Reale, korrekte CSV-Schema-Pruefung mit Pythons eingebautem csv-Modul -
+ersetzt die im Original-Auftrag erfundene Bibliothek '@grpc/proto-loader'
+(die kein CSV-Parser ist und nie existiert hat)."""
+import csv
+import io
+from typing import List
 
-## Validation
 
-- `python3 git-hooks/pre-commit.py` — all checks passed
-- Parsed all three CSVs and verified the new rows match their 14/16/16-column schemas
-- `git diff --check`
-- Checked the current repository and open PR/issue queues for an existing Oak Security contribution
+def validate_csv_rows(csv_text: str, expected_columns: int) -> List[str]:
+    """Prueft jede Datenzeile (ohne Kopfzeile) auf die erwartete
+    Spaltenanzahl. Gibt eine Liste menschenlesbarer Fehlermeldungen zurueck
+    (leer = alles gueltig)."""
+    reader = csv.reader(io.StringIO(csv_text))
+    rows = list(reader)
+    if not rows:
+        return ["CSV ist leer - keine Kopfzeile gefunden."]
 
-## Bounty note
+    errors = []
+    for i, row in enumerate(rows[1:], start=1):
+        if len(row) != expected_columns:
+            errors.append(
+                f"Zeile {i}: {len(row)} Spalten gefunden, {expected_columns} erwartet."
+            )
+    return errors
 
-Filecoin is currently eligible and security has a 1.5× weekly multiplier. The three rows contain 26 newly populated cells (up
 
-## Ergebnis (unverifiziert)
+if __name__ == "__main__":
+    valid_csv = (
+        "name,website,type\n"
+        "Oak Security,https://oaksecurity.io,audit-provider\n"
+        "Example Corp,https://example.com,audit-provider\n"
+    )
+    invalid_csv = (
+        "name,website,type\n"
+        "Oak Security,https://oaksecurity.io\n"  # fehlende Spalte
+    )
 
-```javascript
-// JavaScript code for validating the new rows in CSV files
+    print("Gueltige CSV:", validate_csv_rows(valid_csv, expected_columns=3))
+    print("Ungueltige CSV:", validate_csv_rows(invalid_csv, expected_columns=3))
 
-const fs = require('fs');
-const csvParser = require('@grpc/proto-loader');
-
-function validateCSVRows(filePath, expectedColumns) {
-    const data = fs.readFileSync(filePath, 'utf8');
-    
-    // Parse the CSV file
-    let parsedData;
-    try {
-        parsedData = csvParser.parseStringSync(data);
-    } catch (error) {
-        console.error(`Error parsing CSV file: ${error}`);
-        return false;
-    }
-    
-    // Check if the row count matches expected values
-    const rowsCount = parsedData.length - 1; // Subtract header row
-    
-    // Check if each row has the expected number of columns
-    for (let i = 0; i < rowsCount; i++) {
-        if (parsedData[i].length !== expectedColumns) {
-            console.error(`Row ${i + 1} has an incorrect number of columns`);
-            return false;
-        }
-    }
-    
-    return rowsCount === expectedColumns;
-}
-
-// Example usage:
-const filePaths = ['path/to/csv/file.csv', 'another/path/to/csv/file.csv'];
-const expectedColumns = 16; // Adjust based on the actual number of columns
-for (let i = 0; i < filePaths.length; i++) {
-    const isValid = validateCSVRows(filePaths[i], expectedColumns);
-    
-    if (!isValid) {
-        console.error(`Row validation failed for ${filePaths[i]}`);
-    } else {
-        console.log(`${filePaths[i]} is valid.`);
-    }
-}
+    assert validate_csv_rows(valid_csv, 3) == []
+    assert len(validate_csv_rows(invalid_csv, 3)) == 1
+    print("Alle Pruefungen bestanden.")
 ```
 
-### Erklärung:
-- **JavaScript code**: Diese JavaScript-Funktion verwendet `fs` und `csvParser` für die CSV-Parse. Sie überprüft, ob das angegebene CSV-Dateiobjekt eine gültige Anzahl an Zeilen und Spalten enthält.
-  
-- **CSV-Parse**: Die Funktion `csvParser.parseStringSync` wird verwendet, um das CSV-Datenobjekt zu parsen.
 
-- **Überprüfung**:
-  - Die Funktion überprüft, ob das angegebene CSV-Datenobjekt eine gültige Anzahl an Zeilen enthält.
-  - Sie überprüft auch, ob jede Zeile die erwartete Anzahl von Spalten hat. Wenn eine Zeile die falsche Anzahl von Spalten hat, wird ein Fehler ausgegeben.
-
-- **Anwendung**: Diese Funktion kann verwendet werden, um sicherzustellen, dass die CSV-Datenobjekte in den angegebenen Dateien eine gültige Anzahl an Zeilen und Spalten enthalten.
 
 ---
 
-*Automatisiert erzeugt und archiviert.*
+*Automatisiert erzeugt und archiviert; Code-Beispiel nachträglich manuell ergänzt.*
