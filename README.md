@@ -28,3 +28,4 @@ If this archive was useful to you, donations are welcome - siehe [security-portf
 | 2026-09-05 | moment-1.7.2.min.js: 4 vulnerabilities (highest severity is: 8.7) | 85/100 | [Eintrag](entries/20260905_114015_job2352_moment-172minjs_4_vulnerabilities_highest_severity_is_87.md) |
 | 2026-09-05 | Suggest a staking product or service: ether.fi (staking pool) | 85/100 | [Eintrag](entries/20260905_114021_job4017_Suggest_a_staking_product_or_service_etherfi_staking_pool.md) |
 | 2026-09-06 | Amplestocks ($AMPS) Phase 2: vault core, interface reconciliation, integration and invariants | 85/100 | [Eintrag](entries/20260906_033540_job4417_Amplestocks_AMPS_Phase_2_vault_core_interface_reconciliation.md) |
+| 2026-09-11 | Theo Network: add thUSD adapter, update thBILL reserves, request parent | 85/100 | [Eintrag](entries/20260911_202713_job4397_Theo_Network_add_thUSD_adapter_update_thBILL_reserves_reques.md) |
