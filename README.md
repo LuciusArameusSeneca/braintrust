@@ -31,3 +31,4 @@ If this archive was useful to you, donations are welcome - siehe [security-portf
 | 2026-09-11 | Theo Network: add thUSD adapter, update thBILL reserves, request parent | 85/100 | [Eintrag](entries/20260911_202713_job4397_Theo_Network_add_thUSD_adapter_update_thBILL_reserves_reques.md) |
 | 2026-09-13 | data(security): fill canonical offer names | 85/100 | [Eintrag](entries/20260913_084425_job6948_datasecurity_fill_canonical_offer_names.md) |
 | 2026-09-13 | RFP-017 — Moira: Privacy-Preserving Token Vesting | 85/100 | [Eintrag](entries/20260913_085340_job4009_RFP-017_Moira_Privacy-Preserving_Token_Vesting.md) |
+| 2026-09-13 | Grant packet: ALLMIGHT microgrant — canonical identity + Activity Tape starter kit | 85/100 | [Eintrag](entries/20260913_090236_job4007_Grant_packet_ALLMIGHT_microgrant_canonical_identity_Activity.md) |
