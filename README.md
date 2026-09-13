@@ -30,3 +30,4 @@ If this archive was useful to you, donations are welcome - siehe [security-portf
 | 2026-09-06 | Amplestocks ($AMPS) Phase 2: vault core, interface reconciliation, integration and invariants | 85/100 | [Eintrag](entries/20260906_033540_job4417_Amplestocks_AMPS_Phase_2_vault_core_interface_reconciliation.md) |
 | 2026-09-11 | Theo Network: add thUSD adapter, update thBILL reserves, request parent | 85/100 | [Eintrag](entries/20260911_202713_job4397_Theo_Network_add_thUSD_adapter_update_thBILL_reserves_reques.md) |
 | 2026-09-13 | data(security): fill canonical offer names | 85/100 | [Eintrag](entries/20260913_084425_job6948_datasecurity_fill_canonical_offer_names.md) |
+| 2026-09-13 | RFP-017 — Moira: Privacy-Preserving Token Vesting | 85/100 | [Eintrag](entries/20260913_085340_job4009_RFP-017_Moira_Privacy-Preserving_Token_Vesting.md) |
