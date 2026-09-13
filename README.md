@@ -32,3 +32,4 @@ If this archive was useful to you, donations are welcome - siehe [security-portf
 | 2026-09-13 | data(security): fill canonical offer names | 85/100 | [Eintrag](entries/20260913_084425_job6948_datasecurity_fill_canonical_offer_names.md) |
 | 2026-09-13 | RFP-017 — Moira: Privacy-Preserving Token Vesting | 85/100 | [Eintrag](entries/20260913_085340_job4009_RFP-017_Moira_Privacy-Preserving_Token_Vesting.md) |
 | 2026-09-13 | Grant packet: ALLMIGHT microgrant — canonical identity + Activity Tape starter kit | 85/100 | [Eintrag](entries/20260913_090236_job4007_Grant_packet_ALLMIGHT_microgrant_canonical_identity_Activity.md) |
+| 2026-09-13 | feat(dvp): funding detection, and the mint pre-flight that was missing | 85/100 | [Eintrag](entries/20260913_091314_job4006_featdvp_funding_detection_and_the_mint_pre-flight_that_was_m.md) |
