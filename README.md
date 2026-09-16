@@ -3,6 +3,8 @@ Archiv unverifizierter, automatisiert erzeugter Eintraege
 
 Dieses Repository sammelt automatisiert erzeugte Eintraege - unabhaengig davon, ob sie sich als brauchbar herausstellen oder nicht. Zweck: eine vollstaendige, transparente Sammlung fuehren, ohne dass gelegentliche Fehler der zugrunde liegenden Automatisierung das kuratierte, manuell gegengeprüfte [security-portfolio](https://github.com/LuciusArameusSeneca/security-portfolio) verwaessern.
 
+**🔧 Technische Integritaet verifiziert am 2026-09-16:** Repository-Struktur per `git fsck` als fehlerfrei bestaetigt, der automatisierte Speicher-/Push-Mechanismus wurde erfolgreich getestet. Dies betrifft NUR die technische Zuverlaessigkeit der Archivierung, NICHT den inhaltlichen Wahrheitsgehalt der einzelnen Eintraege (siehe Warnhinweis unten - Inhalte bleiben unverifiziert).
+
 **⚠️ Wichtiger Hinweis:** Alle Eintraege hier sind UNVERIFIZIERT - sie koennen erfundene Inhalte, falsche Annahmen oder inhaltliche Fehler enthalten. Nichts hier wurde manuell gegengeprueft. Fuer kuratierte, verifizierte Web3-Security-Audits siehe stattdessen [security-portfolio](https://github.com/LuciusArameusSeneca/security-portfolio).
 
 ## Eigenstaendige Repositories
